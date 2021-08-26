@@ -4,7 +4,6 @@ FROM golang:latest as builder
 ARG ACCESS_TOKEN
 
 # create a working directory
-#COPY . /gin_test
 WORKDIR /gin_test
 
 # Use token authentication for fetching LambdaTest repos
