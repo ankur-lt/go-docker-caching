@@ -42,7 +42,7 @@ jobs:
       - name: Build docker image
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: false
           tags: go-docker-caching:${{ steps.getDockerTag.outputs.image_tag }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
@@ -56,4 +56,4 @@ jobs:
           # docker build --cache-from ${{ secrets.ECR_REPO_NAME }}:a108a137b8e5b8661fd29500e95874992c5a1600 . -t ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }}
           # docker push ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }}
 
-          docker buildx build --tag ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }} --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache,mode=max . --push
+          docker buildx build --tag ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }} --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache,mode=max .
