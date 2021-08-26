@@ -45,8 +45,8 @@ jobs:
         with:
           push: false
           tags: go-docker-caching:${{ steps.getDockerTag.outputs.image_tag }}
-#          cache-from: type=local,src=/tmp/.buildx-cache
-#          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: ECHOOO
         run: |
