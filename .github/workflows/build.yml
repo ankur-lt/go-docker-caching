@@ -48,7 +48,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
-      - name: Build docker image 2
+      - name: ECHOOO
         run: |
           ls -alR /tmp/.buildx-cache
           cat /tmp/.buildx-cache/index.json
