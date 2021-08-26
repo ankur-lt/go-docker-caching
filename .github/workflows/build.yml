@@ -52,4 +52,3 @@ jobs:
         run: |
           ls -alR /tmp/.buildx-cache
           cat /tmp/.buildx-cache/index.json
-          docker buildx build --tag go-docker-caching:${{ steps.getDockerTag.outputs.image_tag }} --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache,mode=max .
