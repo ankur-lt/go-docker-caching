@@ -52,9 +52,4 @@ jobs:
         run: |
           ls -alR /tmp/.buildx-cache
           cat /tmp/.buildx-cache/index.json
-          # docker pull ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:a108a137b8e5b8661fd29500e95874992c5a1600 || true
-          docker images
-          # docker build --cache-from ${{ secrets.ECR_REPO_NAME }}:a108a137b8e5b8661fd29500e95874992c5a1600 . -t ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }}
-          # docker push ${{ secrets.AWS_ECR_REGISTRY }}/${{ secrets.ECR_REPO_NAME }}:${{ steps.getDockerTag.outputs.image_tag }}
-
           docker buildx build --tag go-docker-caching:${{ steps.getDockerTag.outputs.image_tag }} --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache,mode=max .
