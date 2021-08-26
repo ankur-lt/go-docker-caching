@@ -38,7 +38,7 @@ jobs:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ hashFiles('**/Dockerfile') }}
           restore-keys: |
-            ${{ runner.os }}-buildx-${{ hashFiles('**/Dockerfile') }}
+            ${{ runner.os }}-buildx-
 
       - name: Build docker image 1
         uses: docker/build-push-action@v2
