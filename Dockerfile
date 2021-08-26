@@ -1,17 +1,11 @@
 FROM golang:latest as builder
 
-# Get github access token from arguments to get private dependencies
-ARG ACCESS_TOKEN
-
 # create a working directory
 WORKDIR /gin_test
 
-# Use token authentication for fetching LambdaTest repos
-RUN git config --global  url."https://$ACCESS_TOKEN:x-oauth-basic@github.com/LambdaTest".insteadOf "https://github.com/LambdaTest"
-
 COPY go.mod go.sum ./
-
 RUN ls -a
+
 # Download dependencies
 RUN go mod tidy
 RUN go mod download
